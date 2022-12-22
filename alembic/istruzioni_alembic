@@ -1,0 +1,43 @@
+alembic revision : crea una revisione (una modifica nel database, una upgrade e un downgrade)
+devo definire il nome della revisione
+
+all'intern del file
+
+"""add_content_column_to posts
+
+Revision ID: da187058ef5b
+Revises: 7af5c1e56231
+Create Date: 2022-12-20 10:31:41.972709
+
+"""
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision = 'da187058ef5b'
+down_revision = '7af5c1e56231'
+branch_labels = None
+depends_on = None
+
+
+def upgrade() -> None:
+    op.add_column('posts', sa.Column('content', sa.String(), nullable=False))
+    pass
+
+
+def downgrade() -> None:
+    op.drop_column('posts', 'content')
+    pass
+
+
+ho due possibili revisioni : upgrade e downgrade con due identificativi per essere chiamati da cmd
+
+alembic upgrade revision (+ numero revision) per lanciare la revisione (funzione upgrade)
+alembic downgrade revision (+ numero down_revision) per lanciare la revisione (funzione downgrade)
+
+
+alembic heads per avere l'ultima revisione fatta
+alembic upgrade +1 per andare avanti di uno nelle history delle upgrade
+alembic downgrade -1 per andare indietro di uno nelle history delle downgrade
+

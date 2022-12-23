@@ -2,7 +2,7 @@ from .. import models, schemas, utils, oauth2
 from fastapi import FastAPI, Path, Response, status, HTTPException, Depends, APIRouter
 from ..database_pg_local import get_db
 from sqlalchemy.orm import Session
-#per importare app non fare come nel main app = FastAPI() ma usare APIRouter in lib fastapi
+#per importare app_orm non fare come nel main app_orm = FastAPI() ma usare APIRouter in lib fastapi
 
 router = APIRouter(prefix="/vote", tags=["Votes"])
 #users
